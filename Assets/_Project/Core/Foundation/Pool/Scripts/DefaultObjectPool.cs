@@ -2,11 +2,11 @@ using UnityEngine.Pool;
 
 namespace Core.Foundation.Pool
 {
-    public class DefaultbjectPool<T> : IPool<T> where T : class, IPoolable, new()
+    public class DefaultObjectPool<T> : IPool<T> where T : class, IPoolable, new()
     {
         private readonly ObjectPool<T> _pool;
 
-        public DefaultbjectPool(int defaultCapacity = 10, int maxSize = 50, bool collectionCheck = false)
+        public DefaultObjectPool(int defaultCapacity = 10, int maxSize = 50, bool collectionCheck = false)
         {
             _pool = new(
                 createFunc: () => new T(),
