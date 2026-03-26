@@ -1,0 +1,16 @@
+{
+    "name": "Features.Enemy",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fcf186d19005eb347aa208c5dff4f809"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

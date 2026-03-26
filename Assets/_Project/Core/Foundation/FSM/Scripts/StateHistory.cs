@@ -14,7 +14,7 @@ namespace Core.Foundation.FSM
 
         public void Record(IState<TContext> state)
         {
-            if (_history.Count >= _capacity)
+            if (_history.Count >= 5)
             {
                 _history.Dequeue();
             }

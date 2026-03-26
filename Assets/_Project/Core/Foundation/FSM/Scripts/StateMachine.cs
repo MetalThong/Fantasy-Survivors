@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Core.Foundation.FSM
@@ -8,6 +9,9 @@ namespace Core.Foundation.FSM
         public StateHistory<TContext> History { get; private set; }
         private readonly List<StateTransition<TContext>> _transitions;
         private readonly TContext _context;
+
+        public event Action<IState<TContext>> OnStateEntered;
+        public event Action<IState<TContext>> OnStateExited;
 
         public StateMachine(TContext context, int capacity)
         {
@@ -20,7 +24,9 @@ namespace Core.Foundation.FSM
         public void InitializeState(IState<TContext> startState)
         {
             CurrentState = startState;
+
             CurrentState.Enter(_context);
+            OnStateEntered?.Invoke(CurrentState);
             
             History.Record(CurrentState);
         }
@@ -28,9 +34,13 @@ namespace Core.Foundation.FSM
         public void ChangeState(IState<TContext> newState)
         {
             CurrentState?.Exit(_context);
-            CurrentState = newState;
-            CurrentState.Enter(_context);
+            OnStateExited?.Invoke(CurrentState);
 
+            CurrentState = newState;
+
+            CurrentState.Enter(_context);
+            OnStateEntered?.Invoke(CurrentState);
+            
             History.Record(CurrentState);
         }
 
