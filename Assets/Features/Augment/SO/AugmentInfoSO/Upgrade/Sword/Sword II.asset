@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sword II
   m_EditorClassIdentifier: 
   name: Sword II
-  description: 
+  description: Upgrade your sword.
   frame: {fileID: 21300000, guid: 8b2b2ae13002ca349ad48585e41bb045, type: 3}
   image: {fileID: -92951478, guid: 95f261874aae30249a89038d9417ffce, type: 3}
-  augmentType: 0
+  augmentType: 1
   SourceWeaponID: 0
-  UpgradedWeapon: {fileID: 0}
+  UpgradedWeapon: {fileID: 1596113483461953467, guid: d00c0d89b04da9d4eac64b9b07f55140, type: 3}

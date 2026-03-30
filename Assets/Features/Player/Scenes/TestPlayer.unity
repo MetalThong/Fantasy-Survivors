@@ -210,7 +210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Shuriken
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -718,6 +718,7 @@ MonoBehaviour:
   description: {fileID: 1329010897}
   itemImage: {fileID: 585251362}
   augmentImage: {fileID: 349297911}
+  player: {fileID: 520095862}
 --- !u!1 &354428531
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Sword II
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1390,9 +1391,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1759940949}
   rb: {fileID: 520095860}
-  maxHealth: 0
-  pickupRange: 0
-  currentHealth: 0
+  maxHealth: 100
+  pickupRange: 5
+  currentHealth: 80
   weapons: []
 --- !u!95 &520095863
 Animator:
@@ -1505,7 +1506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &584974401
 Transform:
   m_ObjectHideFlags: 0
@@ -1579,7 +1580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1514483277, guid: 94fe2a1b9d1559342836e272acfd8894, type: 3}
+  m_Sprite: {fileID: -92951478, guid: 95f261874aae30249a89038d9417ffce, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2006,7 +2007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2304,7 +2305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1860050825, guid: 417875f52db2d684c961db0636605d9f, type: 3}
+  m_Sprite: {fileID: 1435986629, guid: 417875f52db2d684c961db0636605d9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2530,7 +2531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2879,6 +2880,7 @@ MonoBehaviour:
   description: {fileID: 1962585934}
   itemImage: {fileID: 1207611051}
   augmentImage: {fileID: 1631776637}
+  player: {fileID: 520095862}
 --- !u!1 &1642703094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +3011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b2b2ae13002ca349ad48585e41bb045, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8af071b0680d1d744b9bdb7d005c538a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3043,6 +3045,7 @@ MonoBehaviour:
   description: {fileID: 488176290}
   itemImage: {fileID: 571078191}
   augmentImage: {fileID: 1642703097}
+  player: {fileID: 520095862}
 --- !u!1 &1756324584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

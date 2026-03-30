@@ -3,6 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Buff Augment", menuName = "Augment/Buff")]
 public class BuffInfoSO : AugmentInfoSO
 {
-    public StatType Type;
+    public BuffType Type;
     public float amount;
 }

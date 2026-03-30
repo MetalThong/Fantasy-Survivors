@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     {
         coolDownLeft = 0f;
     }
-    public void Tick(List<Enemy> enemies)
+    public void Attack(List<Enemy> enemies)
     {
         coolDownLeft -= Time.deltaTime;
         if (coolDownLeft <= 0)
@@ -23,5 +23,4 @@ public class Weapon : MonoBehaviour
             coolDownLeft = info.AttackCooldown;
         }
     }
-
 }

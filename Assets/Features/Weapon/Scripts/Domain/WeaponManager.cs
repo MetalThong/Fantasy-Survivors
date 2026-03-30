@@ -9,44 +9,39 @@ public class WeaponManager : MonoBehaviour
     public static WeaponManager Instance;
     private void Awake()
     {
-        Instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }    
     }
     public Transform[] WeaponPositions = new Transform[6];
     public List<GameObject> WeaponObjects = new List<GameObject>();
     public List<Weapon> Weapons = new List<Weapon>();
-    bool[] slotUsed = new bool[6];
 
     private void Start()
     {
-        slotUsed[0] = true;
         UpdateWeapons();
     }
 
-    public Transform GetWeaponSlot()
+    public Transform GetAvailableWeaponPosition()
     {
-        for (int i = 0; i < 6; i++)
-        {
-            if (!slotUsed[i])
-            {
-                slotUsed[i] = true;
-                return WeaponPositions[i];
-            }
-        }
-        return null;
+        if (WeaponObjects.Count == 6) return null;
+        return WeaponPositions[WeaponObjects.Count];
     }
 
     public bool HasFreeSlot()
     {
-        for (int i = 0; i < slotUsed.Length; i++)
-        {
-            if (!slotUsed[i]) return true;
-        }
-        return false;
+        return WeaponObjects.Count < 6;
     }    
 
     public void AddWeapon(GameObject weapon)
     {
-        Transform parent = GetWeaponSlot();
+        Transform parent = GetAvailableWeaponPosition();
         if (parent != null)
         {
             WeaponObjects.Add(Instantiate(weapon, parent));
@@ -62,11 +57,12 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void Tick(List<Enemy> enemies)
+    public void Attack(List<Enemy> enemies)
     {
         foreach (var weap in Weapons)
         {
-            weap?.Tick(enemies);
+            weap?.Attack(enemies);
         }
     }
+
 }

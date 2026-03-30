@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class PlayerEntity : MonoBehaviour
 {
     private MovementComponent _movementComponent;
-    private WeaponComponent _weaponComponent;
     private StatComponent _statComponent;
     private CircleCollider2D _circleCollider;
 
@@ -24,7 +23,6 @@ public class PlayerEntity : MonoBehaviour
     {
         _nearbyEnemies = new List<Enemy>();
         _movementComponent = new MovementComponent(rb, transform);
-        _weaponComponent = new WeaponComponent(weapons);
         _statComponent = new StatComponent(maxHealth, currentHealth, pickupRange);
         _circleCollider = gameObject.AddComponent<CircleCollider2D>();
         _circleCollider.isTrigger = true;
@@ -37,7 +35,7 @@ public class PlayerEntity : MonoBehaviour
         _movementComponent.Move();
         _movementComponent.FlipSprite();
         _movementComponent.SetInput(joystick.Direction);
-        if(_nearbyEnemies != null && _nearbyEnemies.Count > 0) WeaponManager.Instance.Tick(_nearbyEnemies);
+        if(_nearbyEnemies != null && _nearbyEnemies.Count > 0) WeaponManager.Instance.Attack(_nearbyEnemies);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,5 +55,15 @@ public class PlayerEntity : MonoBehaviour
         {
             _nearbyEnemies.Remove(enemy);
         }
+    }
+
+    public StatComponent GetStatComponent()
+    {
+        return _statComponent;
+    }
+
+    public MovementComponent GetMovementComponent()
+    {
+        return _movementComponent;
     }
 }

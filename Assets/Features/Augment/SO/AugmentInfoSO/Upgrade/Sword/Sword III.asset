@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0b33f3639f7c241a6736106a4e50fa, type: 3}
   m_Name: Sword III
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: Sword III
+  description: Upgrade your sword.
   frame: {fileID: 21300000, guid: 8b2b2ae13002ca349ad48585e41bb045, type: 3}
   image: {fileID: -92951478, guid: 95f261874aae30249a89038d9417ffce, type: 3}
-  augmentType: 0
-  SourceWeaponID: 0
-  UpgradedWeapon: {fileID: 0}
+  augmentType: 1
+  SourceWeaponID: 1
+  UpgradedWeapon: {fileID: 1596113483461953467, guid: 1349661e850b8c143a63d02155f30c82, type: 3}

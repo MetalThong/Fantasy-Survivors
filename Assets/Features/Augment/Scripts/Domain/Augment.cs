@@ -12,6 +12,8 @@ public class Augment : MonoBehaviour
     [SerializeField] Image augmentImage;
     private AugmentInfoSO augmentInfo;
 
+    [SerializeField] PlayerEntity player;
+
     public void Init(AugmentInfoSO info)
     {
         nameText.text = info.name;
@@ -26,46 +28,48 @@ public class Augment : MonoBehaviour
         switch (augmentInfo.augmentType)
         {
             case AugmentType.Buff:
-                BuffAugment((BuffInfoSO)augmentInfo);
+                Buff((BuffInfoSO)augmentInfo);
                 break;
             case AugmentType.Add:
-                AddAugment((AddInfoSO)augmentInfo);
+                Add((AddInfoSO)augmentInfo);
                 break;
             case AugmentType.Upgrade:
-                UpgradeAugment((UpgradeInfoSO)augmentInfo);
+                Upgrade((UpgradeInfoSO)augmentInfo);
                 break;
         }
     }
 
 
-    private void BuffAugment(BuffInfoSO info)
+    private void Buff(BuffInfoSO info)
     {
+        StatComponent stat = player.GetStatComponent();
+        MovementComponent movement = player.GetMovementComponent();
         switch (info.Type)
         {       
-            case StatType.Health:
-                //tăng máu tối đa
+            case BuffType.Health:
+                stat.IncreaseMaxHealth(info.amount);
                 break;
-            case StatType.Healing:
-                //hồi máu
+            case BuffType.Healing:
+                stat.IncreaseCurrentHealth(info.amount);
                 break;
-            case StatType.MoveSpeed:
-                //tăng stat moveSpeed 
+            case BuffType.MoveSpeed:
+                movement.IncreaseMoveSpeed(info.amount);
                 break;
-            case StatType.PickupRange:
-                //tăng stat pickup range
+            case BuffType.PickupRange:
+                stat.IncreasePickUpRange(info.amount);
                 break;          
             default:
                 return;
         }
     }
 
-    private void AddAugment(AddInfoSO info)
+    private void Add(AddInfoSO info)
     {
         WeaponManager.Instance.AddWeapon(info.NewWeapon);
         WeaponManager.Instance.UpdateWeapons();
     }
 
-    private void UpgradeAugment(UpgradeInfoSO info)
+    private void Upgrade(UpgradeInfoSO info)
     {
         List<GameObject> weaponObjs = WeaponManager.Instance.WeaponObjects;
         List<Weapon> weapons = WeaponManager.Instance.Weapons;

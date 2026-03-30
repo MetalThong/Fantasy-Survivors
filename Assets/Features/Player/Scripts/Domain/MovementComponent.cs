@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MovementComponent
 {
     private Vector2 _moveValue;
-    private float _moveSpeed = 5f;
+    private float _moveSpeed = 3f;
     private Rigidbody2D _rb;
     private Transform _transform;
     public MovementComponent(Rigidbody2D rb, Transform transform)
@@ -38,5 +38,10 @@ public class MovementComponent
     public void SetInput(Vector2 input)
     {
         _moveValue = input;
+    }
+
+    public void IncreaseMoveSpeed(float value)
+    {
+        _moveSpeed += value;
     }
 }

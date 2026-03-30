@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0b33f3639f7c241a6736106a4e50fa, type: 3}
   m_Name: Bloodmoon
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: Bloodmoon
+  description: Upgrade your sword.
   frame: {fileID: 21300000, guid: 8af071b0680d1d744b9bdb7d005c538a, type: 3}
   image: {fileID: -1514483277, guid: 94fe2a1b9d1559342836e272acfd8894, type: 3}
-  augmentType: 0
-  SourceWeaponID: 0
-  UpgradedWeapon: {fileID: 0}
+  augmentType: 1
+  SourceWeaponID: 3
+  UpgradedWeapon: {fileID: 1596113483461953467, guid: 8568a9956fa0a8a4fa53bfaac501ce67, type: 3}

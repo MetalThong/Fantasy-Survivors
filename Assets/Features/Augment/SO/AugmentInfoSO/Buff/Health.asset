@@ -16,6 +16,6 @@ MonoBehaviour:
   description: 
   frame: {fileID: 21300000, guid: 8b2b2ae13002ca349ad48585e41bb045, type: 3}
   image: {fileID: 21300000, guid: c4d9228740531d148b9a910d7466e9a5, type: 3}
-  augmentType: 0
+  augmentType: 2
   Type: 0
-  amount: 0
+  amount: 20
