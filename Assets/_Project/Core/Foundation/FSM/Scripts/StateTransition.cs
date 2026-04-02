@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Core.Foundation.FSM
 {
     public class StateTransition<TContext>
@@ -25,5 +27,29 @@ namespace Core.Foundation.FSM
 
             return true;
         }
+
+        #if UNITY_EDITOR
+        public string ToDebugString(TContext context)
+        {
+            string from = From?.GetType().Name ?? "Any";
+            string to = To?.GetType().Name   ?? "<None>";
+
+            if (_guards == null || _guards.Length == 0)
+            {
+                return $"{from} -> {to} (No Guards)";
+            }
+
+            StringBuilder sb = new();
+            sb.AppendLine($"{from} -> {to}");
+
+            foreach (var guard in _guards)
+            {
+                bool result = guard.Evaluate(context);
+                sb.AppendLine($"  └─ [{(result ? "✓" : "✗")}] {guard.GetType().Name}");
+            }
+
+            return sb.ToString();
+        }
+        #endif
     }
 }

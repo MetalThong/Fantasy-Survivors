@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Core.Foundation.FSM
 {
@@ -79,5 +80,24 @@ namespace Core.Foundation.FSM
         {
             _transitions.Add(new StateTransition<TContext>(from, to, guards));
         }
+
+        #if UNITY_EDITOR
+        public string GetTransitionsDebugString()
+        {
+            if (_transitions == null || _transitions.Count == 0)
+            {
+                return "<No Transitions>";
+            }
+
+            StringBuilder sb = new();
+
+            foreach (var transition in _transitions)
+            {
+                sb.AppendLine(transition.ToDebugString(_context));
+            }
+
+            return sb.ToString();
+        }
+        #endif
     }
 }
