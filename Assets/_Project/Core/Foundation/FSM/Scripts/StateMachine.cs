@@ -8,13 +8,13 @@ namespace Core.Foundation.FSM
     {
         public IState<TContext> CurrentState { get; private set; }
         public StateHistory<TContext> History { get; private set; }
+        private IState<TContext> _initialState;
         private readonly List<StateTransition<TContext>> _transitions;
         private readonly TContext _context;
 
-        public event Action<IState<TContext>> OnStateEntered;
-        public event Action<IState<TContext>> OnStateExited;
+        public event Action OnStateChanged;
 
-        public StateMachine(TContext context, int capacity)
+        public StateMachine(TContext context, int capacity = 5)
         {
             _context = context;
             _transitions = new();
@@ -22,12 +22,13 @@ namespace Core.Foundation.FSM
             History = new(capacity);
         }
 
-        public void InitializeState(IState<TContext> startState)
+        public void InitializeState(IState<TContext> initialState)
         {
-            CurrentState = startState;
+            _initialState = initialState;
+            CurrentState = initialState;
 
             CurrentState.Enter(_context);
-            OnStateEntered?.Invoke(CurrentState);
+            OnStateChanged?.Invoke();
             
             History.Record(CurrentState);
         }
@@ -35,13 +36,11 @@ namespace Core.Foundation.FSM
         public void ChangeState(IState<TContext> newState)
         {
             CurrentState?.Exit(_context);
-            OnStateExited?.Invoke(CurrentState);
-
-            CurrentState = newState;
-
-            CurrentState.Enter(_context);
-            OnStateEntered?.Invoke(CurrentState);
             
+            CurrentState = newState;
+            OnStateChanged?.Invoke();
+
+            CurrentState.Enter(_context);            
             History.Record(CurrentState);
         }
 
@@ -79,6 +78,12 @@ namespace Core.Foundation.FSM
         public void AddTransition(IState<TContext> from, IState<TContext> to, params ITransitionGuard<TContext>[] guards)
         {
             _transitions.Add(new StateTransition<TContext>(from, to, guards));
+        }
+        
+        public void Reset()
+        {
+            History.Reset();
+            InitializeState(_initialState);
         }
 
         #if UNITY_EDITOR

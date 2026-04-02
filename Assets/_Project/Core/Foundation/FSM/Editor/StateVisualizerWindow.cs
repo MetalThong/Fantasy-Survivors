@@ -17,7 +17,7 @@ namespace Core.Foundation.FSM.Editor
             window.Show();
         }
 
-        private readonly IReadOnlyDictionary<Type, List<IFsmDebugView>> _contextType2DebugViews = FSMDebugRegistry.ContextType2DebugViews;
+        private readonly IReadOnlyDictionary<Type, List<IFsmDebugView>> _contextType2DebugViews = FsmDebugRegistry.ContextType2DebugViews;
 
         private int _selectedKeyIndex;
         private int _selectedViewIndex;

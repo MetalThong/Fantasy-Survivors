@@ -33,6 +33,12 @@ namespace Core.Foundation.FSM
             _stateTypes.Add(state.GetType());
         }
 
+        public void Reset()
+        {
+            _history.Clear();
+            _stateTypes.Clear();
+        }
+
         public string ToDebugString()
         {
             if (_history.Count == 0) 

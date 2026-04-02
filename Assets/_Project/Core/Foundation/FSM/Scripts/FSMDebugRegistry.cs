@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using UnityEngine;
-
 namespace Core.Foundation.FSM
 {
-    public class FSMDebugRegistry
+    public class FsmDebugRegistry
     {
         private static readonly Dictionary<Type, List<IFsmDebugView>> _contextType2DebugViews = new();
         public static IReadOnlyDictionary<Type, List<IFsmDebugView>> ContextType2DebugViews => _contextType2DebugViews;
